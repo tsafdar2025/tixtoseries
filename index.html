@@ -1,304 +1,415 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHEEN – Fast Fashion Online | Trendy Clothes at Unbeatable Prices</title>
-  <meta name="description" content="Shop the latest trends in women's, men's & kids fashion. New arrivals daily. Up to 90% off. Free shipping on orders over $49.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- Top Promo Bar -->
-  <div class="promo-bar">
-    <div class="promo-content">
-      <span class="promo-text">🔥 NEW USER EXCLUSIVE: Extra 20% OFF + Free Shipping on your first order!</span>
-      <button class="promo-close" aria-label="Close promo">×</button>
-    </div>
-  </div>
+// ===== Product Data - Tixto Clothes Polo Shirts =====
+const products = [
+  {
+    id: 1,
+    title: "Classic Navy Polo Shirt",
+    price: 24.99,
+    original: 39.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&q=80",
+    category: "polo",
+    badge: "-38%",
+    color: "Navy"
+  },
+  {
+    id: 2,
+    title: "Pure White Polo Shirt",
+    price: 22.99,
+    original: 39.99,
+    discount: 43,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80",
+    category: "polo",
+    badge: "-43%",
+    color: "White"
+  },
+  {
+    id: 3,
+    title: "Black Classic Polo Shirt",
+    price: 24.99,
+    original: 39.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80",
+    category: "polo",
+    badge: "-38%",
+    color: "Black"
+  },
+  {
+    id: 4,
+    title: "Burgundy Red Polo Shirt",
+    price: 26.99,
+    original: 42.99,
+    discount: 37,
+    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80",
+    category: "polo",
+    badge: "-37%",
+    color: "Burgundy"
+  },
+  {
+    id: 5,
+    title: "Forest Green Polo Shirt",
+    price: 25.99,
+    original: 41.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1622470953794-aa9c70b0fb9d?w=500&q=80",
+    category: "polo",
+    badge: "NEW",
+    color: "Forest Green"
+  },
+  {
+    id: 6,
+    title: "Sky Blue Polo Shirt",
+    price: 23.99,
+    original: 39.99,
+    discount: 40,
+    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500&q=80",
+    category: "polo",
+    badge: "-40%",
+    color: "Sky Blue"
+  },
+  {
+    id: 7,
+    title: "Heather Grey Polo Shirt",
+    price: 22.99,
+    original: 37.99,
+    discount: 39,
+    image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&q=80",
+    category: "polo",
+    badge: "-39%",
+    color: "Heather Grey"
+  },
+  {
+    id: 8,
+    title: "Mustard Yellow Polo Shirt",
+    price: 24.99,
+    original: 39.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&q=80",
+    category: "polo",
+    badge: "-38%",
+    color: "Mustard"
+  },
+  {
+    id: 9,
+    title: "Soft Pink Polo Shirt",
+    price: 23.99,
+    original: 39.99,
+    discount: 40,
+    image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?w=500&q=80",
+    category: "polo",
+    badge: "NEW",
+    color: "Soft Pink"
+  },
+  {
+    id: 10,
+    title: "Olive Green Polo Shirt",
+    price: 25.99,
+    original: 42.99,
+    discount: 40,
+    image: "https://images.unsplash.com/photo-1489987707025-941f350c803b?w=500&q=80",
+    category: "polo",
+    badge: "-40%",
+    color: "Olive"
+  }
+];
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-top">
-      <button class="mobile-menu-btn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-      <a href="/" class="logo">SHEEN</a>
-      <div class="header-actions">
-        <button class="icon-btn search-toggle" aria-label="Search">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+// ===== State =====
+let cart = JSON.parse(localStorage.getItem('tixto_cart')) || [];
+let wishlist = JSON.parse(localStorage.getItem('tixto_wishlist')) || [];
+
+// ===== DOM Elements =====
+const cartCountEl = document.getElementById('cart-count');
+const wishlistCountEl = document.getElementById('wishlist-count');
+const cartDrawer = document.getElementById('cart-drawer');
+const cartItemsEl = document.getElementById('cart-items');
+const cartTotalEl = document.getElementById('cart-total');
+const drawerCountEl = document.getElementById('drawer-count');
+const overlay = document.getElementById('overlay');
+const mobileMenu = document.getElementById('mobile-menu');
+
+// ===== Render Products =====
+function createProductCard(product) {
+  const isWishlisted = wishlist.includes(product.id);
+  const badgeClass = product.badge === 'NEW' ? 'new' : '';
+  
+  return `
+    <div class="product-card" data-id="${product.id}">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.title}" loading="lazy">
+        <span class="product-badge ${badgeClass}">${product.badge}</span>
+        <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" data-id="${product.id}" aria-label="Add to wishlist">
+          <svg viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
         </button>
-        <a href="#wishlist" class="icon-btn" aria-label="Wishlist">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <span class="badge" id="wishlist-count">0</span>
-        </a>
-        <a href="#cart" class="icon-btn cart-btn" aria-label="Cart">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="badge" id="cart-count">0</span>
-        </a>
-        <a href="#account" class="icon-btn account-btn" aria-label="Account">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
+      </div>
+      <div class="product-info">
+        <h3 class="product-title">${product.title}</h3>
+        <div class="product-price">
+          <span class="price-current">$${product.price.toFixed(2)}</span>
+          <span class="price-original">$${product.original.toFixed(2)}</span>
+          <span class="price-discount">${product.discount}% OFF</span>
+        </div>
+        <button class="add-cart-btn" data-id="${product.id}">Add to Cart</button>
       </div>
     </div>
+  `;
+}
 
-    <!-- Search Bar (desktop) -->
-    <div class="search-bar">
-      <input type="search" placeholder="Search for items, brands, trends..." id="search-input" autocomplete="off">
-      <button class="search-btn" aria-label="Search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      </button>
-    </div>
+function renderProducts() {
+  const flashEl = document.getElementById('flash-products');
+  const newEl = document.getElementById('new-products');
+  const bestEl = document.getElementById('best-products');
+  const womenEl = document.getElementById('women-products');
 
-    <!-- Main Nav -->
-    <nav class="main-nav">
-      <ul class="nav-list">
-        <li><a href="#women" class="nav-link active">Women</a></li>
-        <li><a href="#men" class="nav-link">Men</a></li>
-        <li><a href="#kids" class="nav-link">Kids</a></li>
-        <li><a href="#beauty" class="nav-link">Beauty</a></li>
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#sale" class="nav-link sale">Sale</a></li>
-        <li><a href="#new" class="nav-link">New In</a></li>
-      </ul>
-    </nav>
-  </header>
+  if (flashEl) flashEl.innerHTML = products.slice(0, 4).map(createProductCard).join('');
+  if (newEl) newEl.innerHTML = products.filter(p => p.badge === 'NEW').concat(products.slice(2, 6)).slice(0, 4).map(createProductCard).join('');
+  if (bestEl) bestEl.innerHTML = [products[0], products[2], products[5], products[9]].map(createProductCard).join('');
+  if (womenEl) womenEl.innerHTML = products.slice(4, 8).map(createProductCard).join('');
+}
 
-  <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-header">
-      <span class="logo">SHEEN</span>
-      <button class="close-menu" aria-label="Close menu">×</button>
-    </div>
-    <ul class="mobile-nav">
-      <li><a href="#women">Women</a></li>
-      <li><a href="#men">Men</a></li>
-      <li><a href="#kids">Kids</a></li>
-      <li><a href="#beauty">Beauty</a></li>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#sale" class="sale">Sale</a></li>
-      <li><a href="#new">New In</a></li>
-    </ul>
-  </div>
+// ===== Cart Functions =====
+function saveCart() {
+  localStorage.setItem('tixto_cart', JSON.stringify(cart));
+  updateCartUI();
+}
 
-  <!-- Main Content -->
-  <main>
-    <!-- Hero Banner -->
-    <section class="hero">
-      <div class="hero-slider" id="hero-slider">
-        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400&q=80');">
-          <div class="hero-content">
-            <span class="hero-tag">FLASH SALE</span>
-            <h1>Up to 90% OFF</h1>
-            <p>Thousands of styles. Limited time only.</p>
-            <a href="#flash" class="btn btn-primary">Shop Now</a>
-          </div>
-        </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1400&q=80');">
-          <div class="hero-content">
-            <span class="hero-tag">NEW ARRIVALS</span>
-            <h1>Fall Collection 2026</h1>
-            <p>Fresh drops every day. Stay ahead of trends.</p>
-            <a href="#new" class="btn btn-primary">Explore</a>
-          </div>
-        </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1400&q=80');">
-          <div class="hero-content">
-            <span class="hero-tag">FREE SHIPPING</span>
-            <h1>Orders Over $49</h1>
-            <p>Plus easy returns within 45 days.</p>
-            <a href="#women" class="btn btn-primary">Start Shopping</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-dots" id="hero-dots"></div>
-    </section>
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+  
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ ...product, qty: 1 });
+  }
+  saveCart();
+  
+  const btn = document.querySelector(`.add-cart-btn[data-id="${id}"]`);
+  if (btn) {
+    const original = btn.textContent;
+    btn.textContent = 'Added ✓';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+    }, 1000);
+  }
+}
 
-    <!-- Category Quick Links -->
-    <section class="categories">
-      <div class="container">
-        <div class="category-grid">
-          <a href="#women" class="category-card">
-            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Women">
-            <span>Women</span>
-          </a>
-          <a href="#men" class="category-card">
-            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=400&q=80" alt="Men">
-            <span>Men</span>
-          </a>
-          <a href="#kids" class="category-card">
-            <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&q=80" alt="Kids">
-            <span>Kids</span>
-          </a>
-          <a href="#beauty" class="category-card">
-            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80" alt="Beauty">
-            <span>Beauty</span>
-          </a>
-          <a href="#home" class="category-card">
-            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80" alt="Home">
-            <span>Home</span>
-          </a>
-          <a href="#sale" class="category-card">
-            <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400&q=80" alt="Sale">
-            <span>Sale</span>
-          </a>
-        </div>
-      </div>
-    </section>
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+}
 
-    <!-- Flash Sale -->
-    <section class="flash-sale" id="flash">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <h2 class="section-title">⚡ Flash Sale</h2>
-            <div class="countdown" id="countdown">
-              <span class="count-item"><span id="hours">04</span><small>h</small></span>
-              <span class="count-sep">:</span>
-              <span class="count-item"><span id="minutes">32</span><small>m</small></span>
-              <span class="count-sep">:</span>
-              <span class="count-item"><span id="seconds">18</span><small>s</small></span>
+function updateQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    removeFromCart(id);
+  } else {
+    saveCart();
+  }
+}
+
+function updateCartUI() {
+  const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+  const totalPrice = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  
+  if (cartCountEl) {
+    cartCountEl.textContent = totalItems;
+    cartCountEl.dataset.count = totalItems;
+  }
+  if (drawerCountEl) drawerCountEl.textContent = totalItems;
+  if (cartTotalEl) cartTotalEl.textContent = `$${totalPrice.toFixed(2)}`;
+  
+  if (cartItemsEl) {
+    if (cart.length === 0) {
+      cartItemsEl.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+    } else {
+      cartItemsEl.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.title}">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+            <div class="cart-item-qty">
+              <button class="qty-btn" data-action="minus" data-id="${item.id}">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" data-action="plus" data-id="${item.id}">+</button>
             </div>
-          </div>
-          <a href="#sale" class="view-all">View All →</a>
-        </div>
-        <div class="product-grid" id="flash-products">
-          <!-- Products injected by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- New In -->
-    <section class="products-section" id="new">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">✨ New In</h2>
-          <a href="#new" class="view-all">View All →</a>
-        </div>
-        <div class="product-grid" id="new-products">
-          <!-- Products injected by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Best Sellers -->
-    <section class="products-section" id="bestsellers">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">🔥 Best Sellers</h2>
-          <a href="#bestsellers" class="view-all">View All →</a>
-        </div>
-        <div class="product-grid" id="best-products">
-          <!-- Products injected by JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Promo Banner Mid -->
-    <section class="mid-banner">
-      <div class="container">
-        <div class="mid-banner-content">
-          <h2>App Exclusive Deals</h2>
-          <p>Download the SHEEN app and unlock extra discounts + early access to drops.</p>
-          <div class="app-badges">
-            <a href="#" class="app-btn">App Store</a>
-            <a href="#" class="app-btn">Google Play</a>
+            <button class="remove-item" data-id="${item.id}">Remove</button>
           </div>
         </div>
-      </div>
-    </section>
+      `).join('');
+    }
+  }
+}
 
-    <!-- Women Category Teaser -->
-    <section class="products-section" id="women">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Women's Fashion</h2>
-          <a href="#women" class="view-all">Shop All →</a>
-        </div>
-        <div class="product-grid" id="women-products">
-          <!-- Products injected by JS -->
-        </div>
-      </div>
-    </section>
-  </main>
+// ===== Wishlist =====
+function toggleWishlist(id) {
+  const idx = wishlist.indexOf(id);
+  if (idx > -1) {
+    wishlist.splice(idx, 1);
+  } else {
+    wishlist.push(id);
+  }
+  localStorage.setItem('tixto_wishlist', JSON.stringify(wishlist));
+  if (wishlistCountEl) {
+    wishlistCountEl.textContent = wishlist.length;
+    wishlistCountEl.dataset.count = wishlist.length;
+  }
+  
+  document.querySelectorAll(`.wishlist-btn[data-id="${id}"]`).forEach(btn => {
+    btn.classList.toggle('active');
+    const svg = btn.querySelector('svg');
+    if (svg) svg.setAttribute('fill', btn.classList.contains('active') ? 'currentColor' : 'none');
+  });
+}
 
-  <!-- Cart Drawer -->
-  <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-header">
-      <h3>Shopping Cart (<span id="drawer-count">0</span>)</h3>
-      <button class="close-cart" aria-label="Close cart">×</button>
-    </div>
-    <div class="cart-items" id="cart-items">
-      <p class="empty-cart">Your cart is empty</p>
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Subtotal</span>
-        <strong id="cart-total">$0.00</strong>
-      </div>
-      <button class="btn btn-primary btn-full" id="checkout-btn">Checkout</button>
-      <button class="btn btn-outline btn-full continue-shopping">Continue Shopping</button>
-    </div>
-  </div>
-  <div class="overlay" id="overlay"></div>
+// ===== Hero Slider =====
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dotsContainer = document.getElementById('hero-dots');
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Customer Service</h4>
-          <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Track Order</a></li>
-            <li><a href="#">Returns & Refunds</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Size Guide</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>About SHEEN</h4>
-          <ul>
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Sustainability</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Press</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="#women">Women</a></li>
-            <li><a href="#men">Men</a></li>
-            <li><a href="#kids">Kids</a></li>
-            <li><a href="#sale">Sale</a></li>
-            <li><a href="#new">New In</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Stay Connected</h4>
-          <p class="newsletter-text">Get exclusive offers & style tips</p>
-          <form class="newsletter-form" id="newsletter-form">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">Subscribe</button>
-          </form>
-          <div class="social-links">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="TikTok">TT</a>
-            <a href="#" aria-label="Pinterest">PIN</a>
-            <a href="#" aria-label="Facebook">FB</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 SHEEN Demo. Inspired by SHEIN. This is a free educational demo website. Not affiliated with SHEIN.</p>
-        <div class="payment-icons">Visa · Mastercard · PayPal · Apple Pay</div>
-      </div>
-    </div>
-  </footer>
+function initSlider() {
+  if (!slides.length || !dotsContainer) return;
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = `hero-dot ${i === 0 ? 'active' : ''}`;
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+  
+  setInterval(nextSlide, 5000);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+function goToSlide(index) {
+  if (!slides.length) return;
+  slides[currentSlide].classList.remove('active');
+  if (dotsContainer && dotsContainer.children[currentSlide]) {
+    dotsContainer.children[currentSlide].classList.remove('active');
+  }
+  currentSlide = index;
+  slides[currentSlide].classList.add('active');
+  if (dotsContainer && dotsContainer.children[currentSlide]) {
+    dotsContainer.children[currentSlide].classList.add('active');
+  }
+}
+
+function nextSlide() {
+  if (slides.length) goToSlide((currentSlide + 1) % slides.length);
+}
+
+// ===== Countdown Timer =====
+function startCountdown() {
+  let totalSeconds = 4 * 3600 + 32 * 60 + 18;
+  
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  
+  if (!hoursEl) return;
+  
+  function tick() {
+    if (totalSeconds <= 0) totalSeconds = 5 * 3600;
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    
+    hoursEl.textContent = String(h).padStart(2, '0');
+    minutesEl.textContent = String(m).padStart(2, '0');
+    secondsEl.textContent = String(s).padStart(2, '0');
+    
+    totalSeconds--;
+  }
+  
+  tick();
+  setInterval(tick, 1000);
+}
+
+// ===== Event Listeners =====
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('add-cart-btn')) {
+    const id = parseInt(e.target.dataset.id);
+    addToCart(id);
+  }
+  
+  if (e.target.closest('.wishlist-btn')) {
+    const btn = e.target.closest('.wishlist-btn');
+    const id = parseInt(btn.dataset.id);
+    toggleWishlist(id);
+  }
+  
+  if (e.target.classList.contains('qty-btn')) {
+    const id = parseInt(e.target.dataset.id);
+    const action = e.target.dataset.action;
+    updateQty(id, action === 'plus' ? 1 : -1);
+  }
+  if (e.target.classList.contains('remove-item')) {
+    const id = parseInt(e.target.dataset.id);
+    removeFromCart(id);
+  }
+  
+  if (e.target.closest('.cart-btn')) {
+    e.preventDefault();
+    cartDrawer.classList.add('open');
+    overlay.classList.add('show');
+  }
+  
+  if (e.target.classList.contains('close-cart') || e.target.classList.contains('continue-shopping') || e.target === overlay) {
+    cartDrawer.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+  
+  if (e.target.closest('.mobile-menu-btn')) {
+    mobileMenu.classList.add('open');
+    overlay.classList.add('show');
+  }
+  if (e.target.classList.contains('close-menu')) {
+    mobileMenu.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+  
+  if (e.target.classList.contains('promo-close')) {
+    const bar = document.querySelector('.promo-bar');
+    if (bar) bar.style.display = 'none';
+  }
+  
+  if (e.target.id === 'checkout-btn') {
+    if (cart.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    alert(`Thanks for shopping with Tixto Clothes!\n\nThis is a demo site.\nOrder total: $${cart.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2)}\n\nIn a real site this would go to payment.`);
+  }
+});
+
+document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = e.target.querySelector('input').value;
+  alert(`Thanks for subscribing with ${email}!\nYou'll receive exclusive offers from Tixto Clothes.`);
+  e.target.reset();
+});
+
+document.getElementById('search-input')?.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    const q = e.target.value.trim();
+    if (q) alert(`Searching for "${q}"...\n\nThis is a demo – no real search backend.`);
+  }
+});
+
+// ===== Init =====
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+  updateCartUI();
+  if (wishlistCountEl) {
+    wishlistCountEl.textContent = wishlist.length;
+    wishlistCountEl.dataset.count = wishlist.length;
+  }
+  initSlider();
+  startCountdown();
+});

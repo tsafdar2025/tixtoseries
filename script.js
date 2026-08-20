@@ -1,130 +1,120 @@
-// ===== Product Data =====
+// ===== Product Data - Tixto Clothes Polo Shirts =====
 const products = [
   {
     id: 1,
-    title: "Ribbed Knit Bodycon Dress",
-    price: 12.99,
-    original: 29.99,
-    discount: 57,
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&q=80",
-    category: "women",
-    badge: "-57%"
+    title: "Classic Navy Polo Shirt",
+    price: 24.99,
+    original: 39.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=500&q=80",
+    category: "polo",
+    badge: "-38%",
+    color: "Navy"
   },
   {
     id: 2,
-    title: "Oversized Graphic Tee",
-    price: 9.49,
-    original: 19.99,
-    discount: 53,
-    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80",
-    category: "women",
-    badge: "-53%"
+    title: "Pure White Polo Shirt",
+    price: 22.99,
+    original: 39.99,
+    discount: 43,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80",
+    category: "polo",
+    badge: "-43%",
+    color: "White"
   },
   {
     id: 3,
-    title: "High-Waist Wide Leg Jeans",
-    price: 18.99,
+    title: "Black Classic Polo Shirt",
+    price: 24.99,
     original: 39.99,
-    discount: 53,
-    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&q=80",
-    category: "women",
-    badge: "-53%"
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80",
+    category: "polo",
+    badge: "-38%",
+    color: "Black"
   },
   {
     id: 4,
-    title: "Satin Slip Midi Skirt",
-    price: 14.99,
-    original: 32.00,
-    discount: 53,
-    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500&q=80",
-    category: "women",
-    badge: "-53%"
+    title: "Burgundy Red Polo Shirt",
+    price: 26.99,
+    original: 42.99,
+    discount: 37,
+    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80",
+    category: "polo",
+    badge: "-37%",
+    color: "Burgundy"
   },
   {
     id: 5,
-    title: "Cropped Puffer Jacket",
-    price: 24.99,
-    original: 59.99,
-    discount: 58,
-    image: "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500&q=80",
-    category: "women",
-    badge: "NEW"
+    title: "Forest Green Polo Shirt",
+    price: 25.99,
+    original: 41.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1622470953794-aa9c70b0fb9d?w=500&q=80",
+    category: "polo",
+    badge: "NEW",
+    color: "Forest Green"
   },
   {
     id: 6,
-    title: "Floral Print Maxi Dress",
-    price: 16.99,
-    original: 35.99,
-    discount: 53,
-    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e9201?w=500&q=80",
-    category: "women",
-    badge: "-53%"
+    title: "Sky Blue Polo Shirt",
+    price: 23.99,
+    original: 39.99,
+    discount: 40,
+    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500&q=80",
+    category: "polo",
+    badge: "-40%",
+    color: "Sky Blue"
   },
   {
     id: 7,
-    title: "Classic Leather Sneakers",
-    price: 29.99,
-    original: 69.99,
-    discount: 57,
-    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&q=80",
-    category: "men",
-    badge: "-57%"
+    title: "Heather Grey Polo Shirt",
+    price: 22.99,
+    original: 37.99,
+    discount: 39,
+    image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&q=80",
+    category: "polo",
+    badge: "-39%",
+    color: "Heather Grey"
   },
   {
     id: 8,
-    title: "Relaxed Fit Cargo Pants",
-    price: 22.49,
-    original: 48.00,
-    discount: 53,
-    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80",
-    category: "men",
-    badge: "-53%"
+    title: "Mustard Yellow Polo Shirt",
+    price: 24.99,
+    original: 39.99,
+    discount: 38,
+    image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&q=80",
+    category: "polo",
+    badge: "-38%",
+    color: "Mustard"
   },
   {
     id: 9,
-    title: "Striped Button-Up Shirt",
-    price: 15.99,
-    original: 34.99,
-    discount: 54,
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&q=80",
-    category: "men",
-    badge: "NEW"
+    title: "Soft Pink Polo Shirt",
+    price: 23.99,
+    original: 39.99,
+    discount: 40,
+    image: "https://images.unsplash.com/photo-1554568218-0f1715e72254?w=500&q=80",
+    category: "polo",
+    badge: "NEW",
+    color: "Soft Pink"
   },
   {
     id: 10,
-    title: "Hooded Sweatshirt",
-    price: 19.99,
-    original: 42.00,
-    discount: 52,
-    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80",
-    category: "men",
-    badge: "-52%"
-  },
-  {
-    id: 11,
-    title: "Mini Crossbody Bag",
-    price: 11.99,
-    original: 25.99,
-    discount: 54,
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80",
-    category: "women",
-    badge: "-54%"
-  },
-  {
-    id: 12,
-    title: "Chunky Platform Boots",
-    price: 34.99,
-    original: 79.99,
-    discount: 56,
-    image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500&q=80",
-    category: "women",
-    badge: "-56%"
+    title: "Olive Green Polo Shirt",
+    price: 25.99,
+    original: 42.99,
+    discount: 40,
+    image: "https://images.unsplash.com/photo-1489987707025-941f350c803b?w=500&q=80",
+    category: "polo",
+    badge: "-40%",
+    color: "Olive"
   }
 ];
 
 // ===== State =====
-let cart = JSON.parse(localStorage.getItem('sheen_cart')) || [];
-let wishlist = JSON.parse(localStorage.getItem('sheen_wishlist')) || [];
+let cart = JSON.parse(localStorage.getItem('tixto_cart')) || [];
+let wishlist = JSON.parse(localStorage.getItem('tixto_wishlist')) || [];
 
 // ===== DOM Elements =====
 const cartCountEl = document.getElementById('cart-count');
@@ -171,23 +161,15 @@ function renderProducts() {
   const bestEl = document.getElementById('best-products');
   const womenEl = document.getElementById('women-products');
 
-  // Flash sale - first 4
-  flashEl.innerHTML = products.slice(0, 4).map(createProductCard).join('');
-  
-  // New In - items with NEW badge + others
-  const newItems = products.filter(p => p.badge === 'NEW').concat(products.slice(4, 8));
-  newEl.innerHTML = newItems.slice(0, 4).map(createProductCard).join('');
-  
-  // Best sellers - mixed
-  bestEl.innerHTML = [products[0], products[2], products[6], products[11]].map(createProductCard).join('');
-  
-  // Women
-  womenEl.innerHTML = products.filter(p => p.category === 'women').slice(0, 4).map(createProductCard).join('');
+  if (flashEl) flashEl.innerHTML = products.slice(0, 4).map(createProductCard).join('');
+  if (newEl) newEl.innerHTML = products.filter(p => p.badge === 'NEW').concat(products.slice(2, 6)).slice(0, 4).map(createProductCard).join('');
+  if (bestEl) bestEl.innerHTML = [products[0], products[2], products[5], products[9]].map(createProductCard).join('');
+  if (womenEl) womenEl.innerHTML = products.slice(4, 8).map(createProductCard).join('');
 }
 
 // ===== Cart Functions =====
 function saveCart() {
-  localStorage.setItem('sheen_cart', JSON.stringify(cart));
+  localStorage.setItem('tixto_cart', JSON.stringify(cart));
   updateCartUI();
 }
 
@@ -203,7 +185,6 @@ function addToCart(id) {
   }
   saveCart();
   
-  // Brief feedback
   const btn = document.querySelector(`.add-cart-btn[data-id="${id}"]`);
   if (btn) {
     const original = btn.textContent;
@@ -236,29 +217,33 @@ function updateCartUI() {
   const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
   const totalPrice = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
   
-  cartCountEl.textContent = totalItems;
-  cartCountEl.dataset.count = totalItems;
-  drawerCountEl.textContent = totalItems;
-  cartTotalEl.textContent = `$${totalPrice.toFixed(2)}`;
+  if (cartCountEl) {
+    cartCountEl.textContent = totalItems;
+    cartCountEl.dataset.count = totalItems;
+  }
+  if (drawerCountEl) drawerCountEl.textContent = totalItems;
+  if (cartTotalEl) cartTotalEl.textContent = `$${totalPrice.toFixed(2)}`;
   
-  if (cart.length === 0) {
-    cartItemsEl.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-  } else {
-    cartItemsEl.innerHTML = cart.map(item => `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.title}">
-        <div class="cart-item-info">
-          <div class="cart-item-title">${item.title}</div>
-          <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-          <div class="cart-item-qty">
-            <button class="qty-btn" data-action="minus" data-id="${item.id}">−</button>
-            <span>${item.qty}</span>
-            <button class="qty-btn" data-action="plus" data-id="${item.id}">+</button>
+  if (cartItemsEl) {
+    if (cart.length === 0) {
+      cartItemsEl.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+    } else {
+      cartItemsEl.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.title}">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+            <div class="cart-item-qty">
+              <button class="qty-btn" data-action="minus" data-id="${item.id}">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" data-action="plus" data-id="${item.id}">+</button>
+            </div>
+            <button class="remove-item" data-id="${item.id}">Remove</button>
           </div>
-          <button class="remove-item" data-id="${item.id}">Remove</button>
         </div>
-      </div>
-    `).join('');
+      `).join('');
+    }
   }
 }
 
@@ -270,15 +255,16 @@ function toggleWishlist(id) {
   } else {
     wishlist.push(id);
   }
-  localStorage.setItem('sheen_wishlist', JSON.stringify(wishlist));
-  wishlistCountEl.textContent = wishlist.length;
-  wishlistCountEl.dataset.count = wishlist.length;
+  localStorage.setItem('tixto_wishlist', JSON.stringify(wishlist));
+  if (wishlistCountEl) {
+    wishlistCountEl.textContent = wishlist.length;
+    wishlistCountEl.dataset.count = wishlist.length;
+  }
   
-  // Update heart icons
   document.querySelectorAll(`.wishlist-btn[data-id="${id}"]`).forEach(btn => {
     btn.classList.toggle('active');
     const svg = btn.querySelector('svg');
-    svg.setAttribute('fill', btn.classList.contains('active') ? 'currentColor' : 'none');
+    if (svg) svg.setAttribute('fill', btn.classList.contains('active') ? 'currentColor' : 'none');
   });
 }
 
@@ -288,6 +274,7 @@ const slides = document.querySelectorAll('.hero-slide');
 const dotsContainer = document.getElementById('hero-dots');
 
 function initSlider() {
+  if (!slides.length || !dotsContainer) return;
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = `hero-dot ${i === 0 ? 'active' : ''}`;
@@ -300,30 +287,34 @@ function initSlider() {
 }
 
 function goToSlide(index) {
+  if (!slides.length) return;
   slides[currentSlide].classList.remove('active');
-  dotsContainer.children[currentSlide].classList.remove('active');
+  if (dotsContainer && dotsContainer.children[currentSlide]) {
+    dotsContainer.children[currentSlide].classList.remove('active');
+  }
   currentSlide = index;
   slides[currentSlide].classList.add('active');
-  dotsContainer.children[currentSlide].classList.add('active');
+  if (dotsContainer && dotsContainer.children[currentSlide]) {
+    dotsContainer.children[currentSlide].classList.add('active');
+  }
 }
 
 function nextSlide() {
-  goToSlide((currentSlide + 1) % slides.length);
+  if (slides.length) goToSlide((currentSlide + 1) % slides.length);
 }
 
 // ===== Countdown Timer =====
 function startCountdown() {
-  // Set end time to ~4.5 hours from now for demo
   let totalSeconds = 4 * 3600 + 32 * 60 + 18;
   
   const hoursEl = document.getElementById('hours');
   const minutesEl = document.getElementById('minutes');
   const secondsEl = document.getElementById('seconds');
   
+  if (!hoursEl) return;
+  
   function tick() {
-    if (totalSeconds <= 0) {
-      totalSeconds = 5 * 3600; // reset for demo
-    }
+    if (totalSeconds <= 0) totalSeconds = 5 * 3600;
     const h = Math.floor(totalSeconds / 3600);
     const m = Math.floor((totalSeconds % 3600) / 60);
     const s = totalSeconds % 60;
@@ -341,20 +332,17 @@ function startCountdown() {
 
 // ===== Event Listeners =====
 document.addEventListener('click', (e) => {
-  // Add to cart
   if (e.target.classList.contains('add-cart-btn')) {
     const id = parseInt(e.target.dataset.id);
     addToCart(id);
   }
   
-  // Wishlist
   if (e.target.closest('.wishlist-btn')) {
     const btn = e.target.closest('.wishlist-btn');
     const id = parseInt(btn.dataset.id);
     toggleWishlist(id);
   }
   
-  // Cart qty / remove
   if (e.target.classList.contains('qty-btn')) {
     const id = parseInt(e.target.dataset.id);
     const action = e.target.dataset.action;
@@ -365,21 +353,18 @@ document.addEventListener('click', (e) => {
     removeFromCart(id);
   }
   
-  // Open cart
   if (e.target.closest('.cart-btn')) {
     e.preventDefault();
     cartDrawer.classList.add('open');
     overlay.classList.add('show');
   }
   
-  // Close cart
   if (e.target.classList.contains('close-cart') || e.target.classList.contains('continue-shopping') || e.target === overlay) {
     cartDrawer.classList.remove('open');
     mobileMenu.classList.remove('open');
     overlay.classList.remove('show');
   }
   
-  // Mobile menu
   if (e.target.closest('.mobile-menu-btn')) {
     mobileMenu.classList.add('open');
     overlay.classList.add('show');
@@ -389,30 +374,27 @@ document.addEventListener('click', (e) => {
     overlay.classList.remove('show');
   }
   
-  // Promo close
   if (e.target.classList.contains('promo-close')) {
-    document.querySelector('.promo-bar').style.display = 'none';
+    const bar = document.querySelector('.promo-bar');
+    if (bar) bar.style.display = 'none';
   }
   
-  // Checkout demo
   if (e.target.id === 'checkout-btn') {
     if (cart.length === 0) {
       alert('Your cart is empty!');
       return;
     }
-    alert(`Thanks for shopping with SHEEN!\n\nThis is a demo site.\nOrder total: $${cart.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2)}\n\nIn a real site this would go to payment.`);
+    alert(`Thanks for shopping with Tixto Clothes!\n\nThis is a demo site.\nOrder total: $${cart.reduce((s, i) => s + i.price * i.qty, 0).toFixed(2)}\n\nIn a real site this would go to payment.`);
   }
 });
 
-// Newsletter
 document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
   e.preventDefault();
   const email = e.target.querySelector('input').value;
-  alert(`Thanks for subscribing with ${email}!\nYou'll receive exclusive offers.`);
+  alert(`Thanks for subscribing with ${email}!\nYou'll receive exclusive offers from Tixto Clothes.`);
   e.target.reset();
 });
 
-// Search (demo)
 document.getElementById('search-input')?.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     const q = e.target.value.trim();
@@ -424,8 +406,10 @@ document.getElementById('search-input')?.addEventListener('keypress', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   updateCartUI();
-  wishlistCountEl.textContent = wishlist.length;
-  wishlistCountEl.dataset.count = wishlist.length;
+  if (wishlistCountEl) {
+    wishlistCountEl.textContent = wishlist.length;
+    wishlistCountEl.dataset.count = wishlist.length;
+  }
   initSlider();
   startCountdown();
 });
